@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Psr\\Simplecache\\": "src/"
+            "Psr\\SimpleCache\\": "src/"
         }
     },
     "extra": {
