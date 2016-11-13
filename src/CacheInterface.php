@@ -4,26 +4,24 @@ namespace Psr\SimpleCache;
 
 interface CacheInterface
 {
-    const TTL_MINUTE = 60;
-    const TTL_HOUR = 3600;
-    const TTL_DAY = 86400;
-
     /**
      * Fetch a value from the cache.
      *
-     * @param string $key The unique key of this item in the cache
+     * @param string $key     The unique key of this item in the cache
+     * @param mixed  $default Default value to return if the key does not exist
      *
-     * @return mixed The value of the item from the cache, or null in case of cache miss
+     * @return mixed The value of the item from the cache, or $default in case of cache miss
      */
-    public function get($key);
+    public function get($key, $default = null);
 
     /**
      * Persist data in the cache, uniquely referenced by a key with an optional expiration TTL time.
      *
-     * @param string $key The key of the item to store
-     * @param mixed $value The value of the item to store
-     * @param null|int|DateInterval $ttl Optional. The TTL value of this item. If no value is sent and the driver supports TTL
-     *                                       then the library may set a default value for it or let the driver take care of that.
+     * @param string                $key   The key of the item to store
+     * @param mixed                 $value The value of the item to store
+     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                     the driver supports TTL then the library may set a default value
+     *                                     for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
      */
@@ -58,8 +56,9 @@ interface CacheInterface
      * Persisting a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param array|Traversable     $items An array of key => value pairs for a multiple-set operation.
-     * @param null|int|DateInterval $ttl   Optional. The amount of seconds from the current time that the item will exist in the cache for.
-     *                                     If this is null then the cache backend will fall back to its own default behaviour.
+     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     *                                     the driver supports TTL then the library may set a default value
+     *                                     for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure
      */
@@ -86,5 +85,4 @@ interface CacheInterface
      * @return bool
      */
     public function exists($key);
-
 }
