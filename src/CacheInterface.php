@@ -2,6 +2,9 @@
 
 namespace Psr\SimpleCache;
 
+use DateInterval;
+use Traversable;
+
 interface CacheInterface
 {
     /**
