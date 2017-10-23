@@ -2,6 +2,15 @@
 
 namespace Psr\SimpleCache;
 
+/**
+ * Describes a cache items collection.
+ *
+ * This interface defines the most basic operations on a collection of cache-entries, which entails basic reading,
+ * writing and deleting individual cache items.
+ *
+ * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md
+ * for the full interface specification.
+ */
 interface CacheInterface
 {
     /**
