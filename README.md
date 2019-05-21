@@ -1,8 +1,12 @@
-PHP FIG Simple Cache PSR
-========================
+Common Interface for Caching Libraries
+==============
 
-This repository holds all interfaces related to PSR-16.
+This repository holds all interfaces related to [PSR-16 (Common Interface for Caching Libraries)][psr-url].
 
-Note that this is not a cache implementation of its own. It is merely an interface that describes a cache implementation. See [the specification](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-16-simple-cache.md) for more details.
+Note that this is not a Caching implementation of its own. It is merely interfaces that describe the components of a Simple Caching mechanism.
 
-You can find implementations of the specification by looking for packages providing the [psr/simple-cache-implementation](https://packagist.org/providers/psr/simple-cache-implementation) virtual package.
+You can find [implementations][implementation-url] and [installation instructions][package-url] for the specification on the packagist.
+
+[psr-url]: https://www.php-fig.org/psr/psr-16/
+[package-url]: https://packagist.org/packages/psr/simple-cache
+[implementation-url]: https://packagist.org/providers/psr/simple-cache-implementation
