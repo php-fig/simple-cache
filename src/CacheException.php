@@ -5,7 +5,7 @@ namespace Psr\SimpleCache;
 /**
  * PHP 5 compatibility for \Throwable interface.
  */
-if (version_compare(PHP_VERSION, '7.0.0', 'lt')) {
+if (PHP_VERSION_ID < 70000 && !class_exists('\Throwable')) {
     class_alias('Psr\SimpleCache\ThrowablePhp5', '\Throwable');
 }
 
