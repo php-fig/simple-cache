@@ -11,11 +11,8 @@ interface CacheInterface
      * @param mixed  $default Default value to return if the key does not exist.
      *
      * @return mixed The value of the item from the cache, or $default in case of cache miss.
-     *
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
      */
-    public function get($key, $default = null);
+    public function get(string $key, $default = null);
 
     /**
      * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
@@ -27,11 +24,8 @@ interface CacheInterface
      *                                      for it or let the driver take care of that.
      *
      * @return bool True on success and false on failure.
-     *
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
      */
-    public function set($key, $value, $ttl = null);
+    public function set(string $key, $value, $ttl = null):bool;
 
     /**
      * Delete an item from the cache by its unique key.
@@ -39,18 +33,15 @@ interface CacheInterface
      * @param string $key The unique cache key of the item to delete.
      *
      * @return bool True if the item was successfully removed. False if there was an error.
-     *
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
      */
-    public function delete($key);
+    public function delete(string $key):bool;
 
     /**
      * Wipes clean the entire cache's keys.
      *
      * @return bool True on success and false on failure.
      */
-    public function clear();
+    public function clear():bool;
 
     /**
      * Obtains multiple cache items by their unique keys.
@@ -61,10 +52,9 @@ interface CacheInterface
      * @return iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if $keys is neither an array nor a Traversable,
-     *   or if any of the $keys are not a legal value.
+     *   MUST be thrown if any of the $keys are not a legal value.
      */
-    public function getMultiple($keys, $default = null);
+    public function getMultiple(iterable $keys, $default = null):iterable;
 
     /**
      * Persists a set of key => value pairs in the cache, with an optional TTL.
@@ -77,10 +67,9 @@ interface CacheInterface
      * @return bool True on success and false on failure.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if $values is neither an array nor a Traversable,
-     *   or if any of the $values are not a legal value.
+     *   MUST be thrown if any of the $values are not a legal value.
      */
-    public function setMultiple($values, $ttl = null);
+    public function setMultiple(iterable $values, $ttl = null):bool;
 
     /**
      * Deletes multiple cache items in a single operation.
@@ -90,10 +79,9 @@ interface CacheInterface
      * @return bool True if the items were successfully removed. False if there was an error.
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if $keys is neither an array nor a Traversable,
-     *   or if any of the $keys are not a legal value.
+     *   MUST be thrown if any of the $keys are not a legal value.
      */
-    public function deleteMultiple($keys);
+    public function deleteMultiple(iterable $keys):bool;
 
     /**
      * Determines whether an item is present in the cache.
@@ -106,9 +94,6 @@ interface CacheInterface
      * @param string $key The cache item key.
      *
      * @return bool
-     *
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
      */
-    public function has($key);
+    public function has(string $key):bool;
 }
